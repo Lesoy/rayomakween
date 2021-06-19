@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'CSS/login.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+<form class="fromu-regis" action="{% url 'LOG' %}" method="post" id="formu">
+  {% csrf_token %}
+  <h3 class="from-titulo">Iniciar Sesión</h3>
+
+  <div class="Contenedor">
+
+    <input class="columv1" type="text" name="txtUsuario" id="usuarioid" placeholder="Nombre usuario">
+    <input class="columv2" type="password" name="txtPassword" id="contraid" placeholder="Contraseña">
+
+    <input class="boton" type="submit" value="Confirmar" id="boton">
+
+    <p class="claselink">¿No tienes cuenta?<a href="{% url 'REG' %}">Registrate</a></p>
+  </div>
+</form>
+{% endblock contenido %}

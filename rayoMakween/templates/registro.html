@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'CSS/estilosRegister.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+    <main>
+        <form class="fromu-regis" action="{% url 'REG' %}" method="post" id="formu" onsubmit="return validar()">
+            {% csrf_token %}
+            <h3 class="from-titulo">Nuevo usuario</h3>
+            <div class="Contenedor">
+
+                <input class="colum" type="text" name="txtNombre" id="txtNombre" placeholder="Nombre">
+                <input class="colum" type="text" name="txtApellido" id="txtApellido" placeholder="Apellido">
+                <input class="colum" type="text" name="txtUsuario" id="" placeholder="Nombre usuario">
+                <input class="colum" type="email" name="txtEmail" id="" placeholder="Correo eletrónico">
+                <input class="colum2" type="password" name="txtPassword" id="" placeholder="Contraseña">
+                <input class="colum" type="password" name="txtPassword2" id="" placeholder="Repetir contraseña">
+
+                <input class="boton" type="submit" value="Confirmar" id="envio">
+
+            </div>
+        </form>
+        <div style="text-align: center; color: red; font-size: x-large; ">
+            {{mensaje}}
+        </div>
+    </main>
+{% endblock contenido %}

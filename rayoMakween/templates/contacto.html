@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link type="text/css" rel="stylesheet" href="{% static 'CSS/estilosRegister.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+  <form class="fromu-regis" action="" method="post" id="formu" onsubmit="return validar4() ">
+
+    <h3 class="from-titulo">contacto</h3>
+    <div class="Contenedor">
+
+      <input class="colum" type="email" name="txtEmail" id="correid2" placeholder="Correo eletrónico">
+      <input class="colum" type="text" name="txtNombre" id="name2" placeholder="Nombre completo">
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example " id="seleccion2">
+        <option selected disabled value="0">Motivo</option>
+        <option value="1">Reparación de motor</option>
+        <option value="2">Restauración</option>
+        <option value="3">Cambio de acite</option>
+        <option value="4">Revisión</option>
+        <option value="5">Reparación de choques</option>
+      </select>
+
+      <label for="formFile" class="form-label colum2">Comentario</label>
+      <textarea class="colum" name="txtdiag" id="mot" cols="30" rows="7"></textarea>
+
+      <input class="boton colum3" type="submit" value="Enviar" id="envio">
+      <div class="ubicar">
+        <p>Dirección : AV. Siempre Viva </p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.319919501955!2d-70.66726373437375!3d-33.54506333074697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662db3291c70d21%3A0x50d1e37255c3d131!2sTaller%20Mec%C3%A1nico%20Gran%20Avenida!5e0!3m2!1ses!2scl!4v1619412456631!5m2!1ses!2scl"
+          width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <p>Telefono:+569XXXXX</p>
+      </div>
+    </div>
+  </form>
+{% endblock contenido %}

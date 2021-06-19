@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'CSS/Trabajos.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+  <main style="padding: 20px;">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <h1 class="fw-light">Trabajos</h1>
+        <div class="col-lg-6 col-md-8 mx-auto">
+
+          <p class="lead text-black">Ver todos los trabajos realizados</p>
+
+          <form action="{% url 'FILTROC' %}" method="POST">
+            {% csrf_token %}
+            <p class="lead text-black">filtro por categoria:</p>
+            <select name="cboCategoria" id="cboCategoria">
+              {% for reg in categorias %}
+                <option>{{reg.nombre}}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" value="filtrar">
+          </form>
+          <form action="{% url 'BUSCARNO' %}" method="POST">
+            {% csrf_token %}
+            <p class="lead text-black">filtro por palabra clave</p>
+            <input type="text" name="txtNombre" id="txtNombre">
+            <input type="submit" value="filtrar">
+          </form>
+        </div>
+      </div>
+    </section>
+    <section>
+
+      <div class="row">
+      {% for reg in autos %}
+      
+        <div class="col">
+          <a href="{% url 'FICAU' reg.id_auto %}"> <img src="{{reg.imagen.url}}" alt=""></a>
+          <h2>{{reg.marca}} {{reg.modelo}}</h2>
+          <p>{{reg.categoria}}</p>
+        </div>
+      {% endfor %}
+      </div>
+    </section>
+    <div style="text-align: center; color: black; font-size: x-large;">
+      {{cantidad}}
+    </div>
+  </main>
+{% endblock contenido %}

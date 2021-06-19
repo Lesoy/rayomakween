@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <h1 class=" text-black">¿Quiénes somos?</h1>
+      <div class="col-lg-10 col-md-12 mx-auto">
+        <p class="lead text-black">Somos un taller mecánico,que prestamos servicios de muy buena calidad con personal
+          calificado, reparamos su
+          vehículo a un buen precio y en muy poco tiempo,contáctenos ya</p> <a
+          style="color: rgba(0, 0, 0, 0.883); text-decoration-style: none;" href="{% url 'CONT' %}">Contacto</a>
+        <p>
+        <h3 class=" text-black">Trabajos por categoria</h3>
+        <a href="{% url 'FILTROCA' 'Cambio de aceite' %}" class="btn btn-secondary my-2">Cambio de aceite</a>
+        <a href="{% url 'FILTROCA' 'Mantención' %}" class="btn btn-secondary my-2">Mantención</a>
+        <a href="{% url 'FILTROCA' 'Restauración' %}" class="btn btn-secondary my-2">Restauración</a>
+        <a href="{% url 'FILTROCA' 'Reparación' %}" class="btn btn-secondary my-2">Reparación</a>
+        <a href="{% url 'FILTROCA' 'Reparación de choques' %}" class="btn btn-secondary my-2">Reparación de choques</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="letra">
+      <h3>Nuestros ultimos trabajos</h3>
+    </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+          <img src="{% static 'imang/ultimos_trabajos.jpg' %}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block ">
+            <h5>Ultimos trabajos</h5>
+          </div>
+        </div>
+        {% for reg in autos %}
+          <div class="carousel-item">
+            <a href="/ficha/{{reg.id_auto}}/">
+              <img src="{{reg.imagen.url}}" class="d-block w-100" alt="...">
+            </a>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{reg.marca}}</h5>
+              <p>{{reg.descripcion}}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+</main>
+
+<div class="separator1"></div>
+{% endblock contenido %}

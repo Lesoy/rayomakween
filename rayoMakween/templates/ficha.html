@@ -1,0 +1,67 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block css %}
+  <link type="text/css" rel="stylesheet" href="{% static 'CSS/estilosRegister.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+
+<main>
+    <section>
+
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        </div>
+        <div class="carousel-inner">
+
+          <div class="carousel-item active ">
+            <a href="#">
+              <img src="{{auto.imagen.url}}" class="d-block w-100" alt="...">
+            </a>
+
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="vtr">{{auto.categoria.nombre}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="icon-screen">Diagnóstico: </h1>
+          <p>{{auto.descripcion}}</p>
+          <h3>Mecanico : {{auto.usuario}}</h3>
+          <form action="" method="">
+            <p> Fecha de Llegada:{{auto.fecha_ingreso}}</p>
+          </form>
+        </div>
+        <div class="col">
+          <h1 class="icon-info">Info del vehiculo: </h1>
+          <p>Modelo: {{auto.modelo}}</p>
+          <p>Marca: {{auto.marca}}</p>
+          <p>Año: {{auto.anno_vehiculo}}</p>
+          <p>Color: {{auto.color}}</p>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+{% endblock contenido %}

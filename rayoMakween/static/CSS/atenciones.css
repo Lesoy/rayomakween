@@ -1,0 +1,34 @@
+@import url(general.css);
+
+
+.col img {
+    height: 40vh;
+    width: 55vh;
+    border: solid 2px black;
+    margin-top: 10%;
+}
+.col img:hover{
+
+filter: contrast(.8);
+}
+.col h2{
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
+
+
+.menu .col a {
+    float: none;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.container-fluid {
+    text-align: center;
+    
+}
+
+.container-fluid h1 {
+    text-align: start;
+}

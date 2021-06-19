@@ -1,0 +1,33 @@
+@import url(general.css);
+
+.col img {
+    height: 35vh;
+    width: 55vh;
+    border: solid 2px black;
+    margin-top: 2px;
+}
+.col img:hover{
+    filter: grayscale(.9);
+}
+.col h2{
+    margin-top: 5%;
+}
+.col p{
+    margin-bottom: 15%;
+}
+
+
+.container-fluid {
+    text-align: center;
+    
+}
+
+.container-fluid h1 {
+    text-align: start;
+}
+
+
+
+    
+   
+    

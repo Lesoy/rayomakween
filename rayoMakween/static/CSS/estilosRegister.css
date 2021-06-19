@@ -1,0 +1,117 @@
+
+@import url(general.css);
+
+.fromu-regis{
+
+    background-color:  rgb(246, 243, 243);
+    border: solid 2px black;
+    width: 95%;
+    max-width: 770px;
+    margin: auto;
+    margin-top: 10%; 
+    margin-bottom: 17%;
+    border-radius: 5px; 
+   
+    
+}
+.from-titulo{
+    background-color: rgb(170, 166, 166);
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: solid 3px black;
+   
+}
+
+.Contenedor{
+
+    padding: 60px 40px ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;   
+}
+
+.contenedor input{
+    margin-bottom: 20px;
+    padding: 15;
+    font-size: 16px;
+    border-style: ridge;
+     
+}
+
+.colum{
+    width:90%;
+    margin: auto;
+    margin-bottom: 5%;
+ }
+ .colum2{
+    width:90%;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 12%;
+ }
+ .colum3{
+    width:45%;
+    
+    margin: auto;
+    margin-bottom: 5%;
+    
+ }.colum4{
+     width: auto;
+     margin-bottom: 5%;
+ }
+.colum5{
+    width: 48%;
+    margin-bottom: 5%;
+}
+
+.boton{
+    margin:auto;
+    margin-top: 5%;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+.boton:active{
+    transform: scale(1.05);
+}
+
+.boton:hover{
+    filter: brightness(0.8);
+    transition: 0.5s;
+}
+
+.colum{
+    width:100%;
+    margin-bottom: 5%;
+ }
+ .colum2{
+     width: 100%;
+     margin: auto;
+     margin-top: 10%;
+     margin-bottom: 5%; 
+       
+ }
+ 
+ .boton{
+     margin:auto;
+     background-color: green;
+     color: white;
+     padding: 2% 5% ;
+     margin-top: 5%;
+ }
+ .ubicar{
+     margin: auto;
+ }
+ .ubicar iframe{
+   max-width: 100%;
+     height: auto;  
+ }
+ .ubicar p{
+     text-align: center;
+     margin-top: 5%;
+     margin-bottom: 5%;
+ }
+ 
+ 

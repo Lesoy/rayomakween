@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'CSS/estilosRegister.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+<main>
+    <form class="fromu-regis" action="{% url 'MODIFI' %}" method="POST" onsubmit="return validar()"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 class="from-titulo">Modificar vehiculo</h3>
+        <div class="Contenedor">
+            <input class="colum" type="number" name="txtId" id="txtId" value="{{autos.id_auto}}">
+            <input class="colum" type="text" name="txtModelo" id="txtModelo" placeholder="Modelo del auto"
+                value="{{autos.modelo}}">
+            <input class="colum" type="text" name="txtMarca" id="txtMarca" placeholder="Marca del auto"
+                value="{{autos.marca}}">
+            <input class="colum5" type="text" name="txtcolor" id="txtcolor" placeholder="Color" value="{{autos.color}}">
+            <input class="colum5" type="number" name="numberanno" id="numberanno" placeholder="año del modelo"
+                value="{{autos.anno_vehiculo}}">
+
+            <select class="colum" name="cboCategoria" id="cboCategoria">
+                {% for reg in categorias %}
+                    {% if reg.nombre == autos.categoria.nombre %}
+                        <option selected value="{{reg.nombre}}">{{reg.nombre}}</option>
+                    {% else %}
+                        <option value="{{reg.nombre}}">{{reg.nombre}}</option>
+                    {% endif %}
+                    
+                {% endfor %}
+            </select>
+            
+            <label for="formFile" class="form-label colum2">Diagnóstico</label>
+            <textarea class="colum" name="txtDescripcion" id="txtDescripcion" cols="30"
+                rows="7">{{autos.descripcion}}</textarea>
+
+            <label for="formFile" class="form-label colum3">Fecha de llegada</label>
+            <input class="colum3" type="date" name="txtfecha" id="txtfecha" value="{{autos.fecha_ingreso}}">
+            
+            
+            <label for="formFile" class="form-label">
+                imagen actual: <a href="{{autos.imagen.url}}">{{autos.imagen.url}}</a>
+                <input class="colum" type="file" name="txtImg" id="txtImg">
+            </label>
+            <input class="btn-registro" type="reset" value="Limpiar" id="Limpiar">
+            <input class="boton colum3" type="submit" value="Confirmar" id="Confirmar">
+        </div>
+    </form>
+</main>
+<div id="listado" style="text-align: center; color: white; background-color: red;font-size: x-large;">
+    {{mensaje}}
+</div>
+{% endblock contenido %}

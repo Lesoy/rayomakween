@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'CSS/estilosRegister.css' %}">
+{% endblock css %}
+
+{% block contenido %}
+<main>
+    <form class="fromu-regis" action="{% url 'FREG' %}" method="POST" onsubmit="return validar()"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 class="from-titulo">Nueva publicación</h3>
+        <div class="Contenedor">
+
+            <input class="colum" type="text" name="txtModelo" id="txtModelo" placeholder="Modelo del auto">
+            <input class="colum" type="text" name="txtMarca" id="txtMarca" placeholder="Marca del auto">
+            <input class="colum5" type="text" name="txtcolor" id="txtcolor" placeholder="Color">
+            <input class="colum5" type="number" name="numberanno" id="numberanno" placeholder="año del modelo">
+
+            <select class="colum" name="cboCategoria" id="cboCategoria">
+                {% for reg in categorias %}
+                <option value="{{reg.nombre}}">{{reg.nombre}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="formFile" class="form-label colum2">Diagnóstico</label>
+            <textarea class="colum" name="txtDescripcion" id="txtDescripcion" cols="30" rows="7"></textarea>
+
+            <label for="formFile" class="form-label colum3">Fecha de llegada</label>
+            <input class="colum3" type="date" name="txtfecha" id="txtfecha">
+
+            <label for="formFile" class="form-label">Subir foto
+                <input class="colum" type="file" name="txtImg" id="txtImg">
+            </label>
+            <input class="btn-registro" type="reset" value="Limpiar" id="Limpiar">
+            <input class="boton colum3" type="submit" value="Confirmar" id="Confirmar">
+
+        </div>
+    </form>
+</main>
+<div id="listado" style="text-align: center; color: white; background-color: red;font-size: x-large;">
+    {{mensaje}}
+</div>
+
+<div style="padding: 40px; margin: auto;">
+    <table class="table table-secondary">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Categoria</th>
+                <th>Diagnostico</th>
+                <th>Publicar</th>
+                <th>Comentario</th>
+                <th>Operaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reg in autos %}
+            <tr>
+                <th>{{reg.id_auto}}</th>
+                <th>
+                    <img src="{{reg.imagen.url}}" alt="" width="100px" height="100px">
+                </th>
+                <th>{{reg.marca}}</th>
+                <th>{{reg.modelo}}</th>
+                <th>{{reg.anno_vehiculo}}</th>
+                <th>{{reg.categoria.nombre}}</th>
+                <th>{{reg.descripcion}}</th>
+                <th>
+                    {% if reg.publicar %}
+                    <div style="color: green">PUBLICADO</div>
+                    {% else %}
+                    <div style="color: red">NO PUBLICADO</div>
+                    {% endif %}
+                </th>
+                <th>{{reg.comentario}}</th>
+                <th>
+                    <button class="btn btn-danger" onclick="eliminar('{{reg.id_auto}}')">Eliminar</button>
+                    <button class="btn btn-info" onclick="modificar('{{reg.id_auto}}')">Modificar</button>
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    function eliminar(id) {
+        Swal.fire({
+            title: 'Desea eliminar el vehiculo '+id+'?',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                location.href='/eliminar_auto/'+id+'/';
+            }
+        })
+
+    }
+    function modificar(id) {
+        location.href = '/modificar_auto/' + id + '/';
+
+    }
+</script>
+
+{% endblock contenido %}
